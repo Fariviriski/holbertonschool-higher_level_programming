@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-for numz in range(0, 10):
-    for numy in range(numz + 1, 10):
-        if numz != 8:
-            print("{}{}".format(numz, numy), end=", ")
-
+for i in range(0, 10):
+    for j in range(i + 1, 10):
+        if i != 8:
+            print("{}{}".format(i, j), end=", ")
         else:
-             print("{}{}".format(numz, numy))
+            print("{}{}".format(i, j))
