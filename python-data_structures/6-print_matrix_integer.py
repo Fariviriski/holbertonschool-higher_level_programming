@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 def print_matrix_integer(matrix=[[]]):
-    for row in matrix:
-        for i, num in enumerate(row):
-            if i < len(row) - 1:
-                print("{:d}".format(num), end=" ")
-
+    for a in range(len(matrix)):
+        for b in range(len(matrix[a])):
+            if b != len(matrix[b]) - 1:
+                print("{:d} ".format(matrix[a][b]), end="")
             else:
-                print("{:d}".format(num))
+                print("{:d}".format(matrix[a][b]), end="")
+        print("")
