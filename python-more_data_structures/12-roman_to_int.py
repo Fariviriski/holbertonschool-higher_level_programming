@@ -21,7 +21,7 @@ def roman_to_int(roman_string):
     c = 0
     ll = len(roman_string)
     while c < ll:
-        if c + 1 < ll and roman_string[c: c+ 2] in roman:
+        if c + 1 < ll and roman_string[c:c + 2] in roman:
             v += roman[roman_string[c:c + 2]]
             c += 2
         else:
