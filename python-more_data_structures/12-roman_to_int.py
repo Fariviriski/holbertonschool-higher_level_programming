@@ -1,46 +1,62 @@
 #!/usr/bin/python3
+
+
+def convert_roman(ch):
+    """
+    converts a roman numeral character into the respective integer
+    """
+    ret = -1
+    if ch == "I":
+        ret = 1
+    elif ch == "V":
+        ret = 5
+    elif ch == "X":
+        ret = 10
+    elif ch == "L":
+        ret = 50
+    elif ch == "C":
+        ret = 100
+    elif ch == "D":
+        ret = 500
+    elif ch == "M":
+        ret = 1000
+    return ret
+
+
 def roman_to_int(roman_string):
-if not roman_string:
-  return 0
+    """
+    converts any string of roman numerals to decimal
+    """
+    cur_max = -1
+    cur = conv = 0
+    holder = []
 
-if not isinstance(roman_string, str):
-  return 0
+    if roman_string is None or type(roman_string) is not str:
+        return 0
+    for c in roman_string:
+        cur = convert_roman(c)
+        if cur == -1:
+            return 0
+        if len(holder) == 0:
+            if cur == cur_max or cur_max == -1:
+                cur_max = cur
+                conv += cur
+            elif cur < cur_max:
+                holder.append(cur)
+            elif cur > cur_max:  # only happens if smaller is starting number
+                # for example: IIX, VXC
+                cur_max = cur
+                cur -= conv
+                conv = cur
+        else:
+            if cur > holder[-1]:
+                cur_max = cur
+                cur -= sum(holder)
+                conv += cur
+                holder.clear()
+            else:
+                holder.append(cur)
 
-if not roman_string.isupper():
-  return 0
-
-roman_dict = {
-    "I": 1,
-    "IV": 4,
-    "IX": 9,
-    "x": 10,
-    "L": 50,
-    "C": 100,
-    "D": 500,
-    "M": 1000
-  }
-
-  result = 0
-  temp = list(roman_string)
-
-  if len(temp) > 1:
-    idx = 0
-    for i in temp:
-      try:
-        if temp[idx] == 'I' and temp[idx + 1] == 'V'
-          temp[idx:idx + 2] = [''.join(temp[idx:idx +2])]
-          except IndexError:
-          pass
-      try:
-        if temp[idx] == 'I' and temp[idx + 1] == 'X':
-          temp[idx:idx + 2] = [''.join(temp[idx:idx +2])]
-          except IndexError:
-          pass
-
-      idx += 1
-
-  for k, v in roman_dict.items():
-    for index in temp:
-      if index == k:
-        result += v
-  return result
+    if len(holder) != 0:
+        conv += sum(holder)
+    return conv
