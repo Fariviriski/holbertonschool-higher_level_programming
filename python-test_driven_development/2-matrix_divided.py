@@ -9,7 +9,7 @@ def matrix_division(matrix, div):
     """
     error = "matrix must be a matrix (list of lists) of integers/floats"
 
-    if isinstance(matrix, list) of len(matrix) < 1:
+    if isinstance(matrix, list) or len(matrix) < 1:
         raise TypeError(error)
     if div = 0:
         raise ZeroDivisionError("division by zero")
