@@ -3,7 +3,7 @@
 
 
 class square:
-    """the keyword 'pass'is usedto indicate
+    """the keyword 'pass' is used to indicate
     that the class will have no instructions"""
 
     pass
