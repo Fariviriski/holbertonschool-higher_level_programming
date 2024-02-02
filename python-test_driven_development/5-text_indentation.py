@@ -3,6 +3,7 @@
 module that defines text_indentation
 """
 
+
 def text_indentation(text):
     """
     prints a text with 2 new lines after : . ? and :
@@ -10,13 +11,13 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    delimiters = ['.', '?', ':']
+    delimiters = [".", "?", ":"]
 
     strt = 0
 
     for i, char in enumerate(text):
         if char in delimiters:
-            print(text[strt:i + 1].strip())
+            print(text[strt : i + 1].strip())
             print()
             strt = i + 1
 
@@ -24,8 +25,9 @@ def text_indentation(text):
         print(text[strt:].strip())
 
 
-if if __name__ == "__main__":
-    text_indentation("""
+if __name__ == "__main__":
+    text_indentation(
+        """
     Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
     Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
     Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
@@ -35,4 +37,5 @@ if if __name__ == "__main__":
     stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
     cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
     beatiorem! Iam ruinas videres
-    """)
+    """
+    )
