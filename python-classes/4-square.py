@@ -3,7 +3,7 @@
 
 
 class square:
-    """class define initialize attributes methods"""
+    """Square class define initialize attributes methods"""
 
     def __init__(self, size=0):
         self.size = size
