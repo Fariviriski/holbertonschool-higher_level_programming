@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 """
-module for divide matrix
+module for matrix_divided
 """
 
 
-def matrix_division(matrix, div):
+def matrix_divided(matrix, div):
     """
     function to divide all elements of a matrix
     """
