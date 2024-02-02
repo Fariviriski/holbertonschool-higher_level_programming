@@ -6,7 +6,7 @@ module for divide matrix
 
 def matrix_division(matrix, div):
     """
-    fonction to divide all elements of a matrix
+    function to divide all elements of a matrix
     """
     error = "matrix must be a matrix (list of lists) of integers/floats"
 
