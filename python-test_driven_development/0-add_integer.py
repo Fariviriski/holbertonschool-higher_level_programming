@@ -1,11 +1,19 @@
 #!/usr/bin/python3
-"""function adds two integers"""
+"""
+This is the module  0-add_integer.py
+"""
+
 
 def add_integer(a, b=98):
-    """checks if integer or float"""
-    if not isinstance(a, int) and not in isinstance(a, float):
+    """
+    Function that adds 2 integers
+    """
+    if isinstance(a, float):
+        a = int(a)
+    if isinstance(b, float):
+        b = int(b)
+    if not isinstance(a, int):
         raise TypeError("a must be an integer")
-        """checks if be is an integer or a float"""
-    if not isinstance(b,int) and not isinstance(b, float):
+    if not isinstance(b, int):
         raise TypeError("b must be an integer")
-        return int(a) + int(b)
+    return a + b
