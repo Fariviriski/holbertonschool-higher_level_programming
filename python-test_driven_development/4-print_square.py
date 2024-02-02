@@ -3,6 +3,7 @@
 module that defines print_square
 """
 
+
 def print_square(size):
     """
     prints a square with the '#' character
@@ -12,8 +13,7 @@ def print_square(size):
         raise TypeError("size must be an int")
 
     if size < 0:
-        raise ValueError("size must me >= 0")
-
+        raise ValueError("size must be >= 0")
 
     for i in range(size):
         print("#" * size)
