@@ -2,7 +2,7 @@
 """Square"""
 
 
-class square:
+class Square:
     """Square class define initialize attributes methods"""
 
     def __init__(self, size=0):
