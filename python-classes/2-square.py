@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-'''a class called square is initialized'''
+'''Square'''
 
 
-class square:
-    '''a private instance is made to an attribute with the name size'''
+class Square:
+    '''Square'''
     def __init__(self, size=0):
         self.size = size
         '''raise an error if the data type is incorrect'''
