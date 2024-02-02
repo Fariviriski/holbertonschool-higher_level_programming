@@ -14,10 +14,11 @@ def matrix_divided(matrix, div):
     Returns a new matrix.
     See tests/2-matrix_divided.txt for test cases.
     """
+        error = "matrix must be a matrix (list of lists) of integers/floats"
     if not isinstance(matrix, list) or not any(
         isinstance(matrix[0], list) for row in matrix
     ):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError(error)
     for row in matrix:
         for elem in row:
             if not isinstance(elem, (int, float)):
