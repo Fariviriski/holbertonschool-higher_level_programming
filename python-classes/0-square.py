@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""an empty class called square is initialized"""
+"""an empty class"""
 
 
-class square:
-    """square"""
+class Square:
+    """Square"""
 
     pass
