@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# 2-matrix_divided.py
 """Defines a matrix division function."""
 
 
@@ -17,6 +16,7 @@ def matrix_divided(matrix, div):
     Returns:
         A new matrix representing the result of the division.
     """
+    error = "matrix must be a matrix (list of lists) of " "integers/floats"
     if (
         not isinstance(matrix, list)
         or matrix == []
@@ -26,7 +26,7 @@ def matrix_divided(matrix, div):
             for ele in [num for row in matrix for num in row]
         )
     ):
-        raise TypeError("matrix must be a matrix (list of lists) of " "integers/floats")
+        raise TypeError(error)
 
     if not all(len(row) == len(matrix[0]) for row in matrix):
         raise TypeError("Each row of the matrix must have the same size")
