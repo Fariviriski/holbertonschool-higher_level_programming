@@ -3,6 +3,7 @@
 module for divide matrix
 """
 
+
 def matrix_division(matrix, div):
     """
     fonction to divide all elements of a matrix
@@ -11,7 +12,7 @@ def matrix_division(matrix, div):
 
     if isinstance(matrix, list) or len(matrix) < 1:
         raise TypeError(error)
-    if div = 0:
+    if div == 0:
         raise ZeroDivisionError("division by zero")
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
