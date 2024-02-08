@@ -59,9 +59,9 @@ class Rectangle:
                     for h in range(self.height):
                         for w in range(self.width):
                             result += "#"
-                        if height != (self.height - 1):
+                        if h != (self.height - 1):
                             result = result + "\n"
                 return result
 
         def __repr__(self):
-            return "rectangle({:d}, {:d})".format(self.width, self.height)
+            return "Rectangle({:d}, {:d})".format(self.width, self.height)
