@@ -3,8 +3,10 @@
 module for rectangle
 """
 
+
 class Rectangle:
     """constructor for class named Rectangle"""
+
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
@@ -27,11 +29,12 @@ class Rectangle:
         def height(self):
             """The height property."""
             return self._height
+
         @height.setter
         def height(self, value):
             if type(value) is not int:
                 raise TypeError("height must be an integer")
-            elif:
+            elif value < 0:
                 raise ValueError("height must be >= 0")
             else:
                 self._height = value
@@ -42,6 +45,7 @@ class Rectangle:
 
             def perimeter(self):
                 """method to calc perimeter"""
+
             if self.width <= 0 or self.height <= 0:
                 return 0
             return 2 * (self.width + self.height)
@@ -55,6 +59,6 @@ class Rectangle:
                     for h in range(self.height):
                         for w in range(self.width):
                             result += "#"
-                        if height != (self.height -1):
+                        if height != (self.height - 1):
                             result = result + "\n"
                 return result
