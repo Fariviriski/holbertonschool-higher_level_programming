@@ -41,8 +41,8 @@ class Rectangle:
         """method to calculate area of rectangle"""
         return self.width * self.height
 
-    def parameter(self):
-        """calculates parameter"""
+    def perimeter(self):
+        """calculates perimeter"""
         if self.width <= 0 or self.__height <= 0:
             return 0
         return 2 * (self.width + self.height)
