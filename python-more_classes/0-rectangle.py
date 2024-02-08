@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+"""
+Rectangle class module
+"""
 
 
 class Rectangle:
     """Class that defines a Rectangle"""
 
-    pass
+    def __init__(self):
+        pass
