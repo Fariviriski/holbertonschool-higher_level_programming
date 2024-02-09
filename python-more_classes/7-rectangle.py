@@ -3,7 +3,7 @@
 
 
 class Rectangle:
-    """constructor for Rectangle"""
+    """Constructor of the empty class Rectangle"""
 
     number_of_instances = 0
     print_symbol = "#"
@@ -15,11 +15,12 @@ class Rectangle:
 
     @property
     def width(self):
-        """The width property."""
+        """property for private instance attribute: width"""
         return self.__width
 
     @width.setter
     def width(self, value):
+        """setter of width"""
         if type(value) is not int:
             raise TypeError("width must be an integer")
         elif value < 0:
@@ -29,47 +30,48 @@ class Rectangle:
 
     @property
     def height(self):
-        """The height property."""
-        return self._height
+        """property for private instance attribute: height"""
+        return self.__height
 
     @height.setter
     def height(self, value):
+        """setter of height"""
         if type(value) is not int:
             raise TypeError("height must be an integer")
         elif value < 0:
             raise ValueError("height must be >= 0")
         else:
-            self._height = value
+            self.__height = value
 
     def area(self):
-        """method for calc area"""
-        return self.width + self.height
+        """Method to calculate the area of Rectangle"""
+        return self.width * self.height
 
     def perimeter(self):
-        """method for primeter calc"""
-        if self.width < 0 or self.height < 0:
+        """Method to calculate the perimeter of Rectangle"""
+        if self.width <= 0 or self.height <= 0:
             return 0
         return 2 * (self.width + self.height)
 
     def __str__(self):
-        """prints rectangle to stdout"""
+        """Print a Rectangle to stdout"""
         result = ""
         symbol = str(self.print_symbol)
-        if self.width < 0 or self.height < 0:
+        if self.width <= 0 or self.height <= 0:
             return result
         else:
-            for h in range(self.height):
-                for w in range(self.width):
+            for j in range(self.height):
+                for i in range(self.width):
                     result += symbol
-            if h != (self.height - 1):
-                result = result + "\n"
+                if j != (self.height - 1):
+                    result = result + "\n"
         return result
 
     def __repr__(self):
-        """method returning unambigous rep of str"""
-        return "rectangle({:d}, {:d})".format(self.width, self.height)
+        """Method that return an Unambigous representation of str"""
+        return "Rectangle({:d}, {:d})".format(self.width, self.height)
 
     def __del__(self):
-        "executes upon obj deletion"
+        """Method that executes when object is deleted"""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
