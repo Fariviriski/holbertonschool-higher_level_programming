@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 """class Rectangle"""
 
+
 class Rectangle:
     """constructor for Rectangle"""
+
     def __init__(self, width=0, height=0):
         self.width = width
         self.height = height
@@ -11,6 +13,7 @@ class Rectangle:
     def width(self):
         """The width property."""
         return self.__width
+
     @width.setter
     def width(self, value):
         if type(value) is not int:
@@ -24,12 +27,13 @@ class Rectangle:
     def height(self):
         """The height property."""
         return self._height
+
     @height.setter
     def height(self, value):
         if type(value) is not int:
             raise TypeError("height must be an integer")
         elif value < 0:
-            raise ValueError("height must be >= 0"):
+            raise ValueError("height must be >= 0")
         else:
             self._height = value
 
@@ -52,7 +56,7 @@ class Rectangle:
             for h in range(self.height):
                 for w in range(self.width):
                     result += "#"
-            if (h != (self.height - 1)):
+            if h != (self.height - 1):
                 result = result + "\n"
         return result
 
