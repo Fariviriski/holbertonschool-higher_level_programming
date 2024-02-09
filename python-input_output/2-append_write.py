@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-"""defines a file-appending func"""
+"""append"""
 
 def append_write(filename="", text=""):
-   """appends a string to enf of utf-8 text file"""
+   """append
+   Args:
+    filename: name of filename
+    text: text to append
+   """
     with open(filename, "a", encoding="utf-8") as f:
         return f.write(text)
