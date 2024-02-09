@@ -7,6 +7,9 @@ def inherits_from(obj, a_class):
     Args:
         obj (any): the object to checks
         a_class (type): the class to match object to
+    Returns:
+        True if object is inherited instance
+        False otherwise
     """
     if issubclass(type(obj), a_class) and type(obj) != a_class:
         return True
