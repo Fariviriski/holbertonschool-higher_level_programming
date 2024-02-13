@@ -3,9 +3,9 @@
 
 import unittest
 import json
-from models import base
+from models import Base
 
-base = base.base
+Base = base.base
 
 
 class TestBase(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestBase(unittest.TestCase):
     def no_id(self):
         """testing id as none"""
         b = base()
-        self.assertEqual(b.is, 1)
+        self.assertEqual(b.id, 1)
 
     def id_set(self):
         """test for id as not none"""
@@ -58,10 +58,10 @@ class TestBase(unittest.TestCase):
         self.assertEqual(len(json_1), 2)
         self.assertEqual(type(json_1[0]) is dict)
         self.assertEqual(type(json_1[1]) is dict)
-        self.assertEqual(json_1[0],
-                        {"id": 69, "width": 15, "height": 42, "x": 7, "y": 9})
-        self.assertEqual(json_1[1],
-                        {"id": 3, "width": 4, "height": 2, "x": 6, "y": 8})
+        self.assertEqual(
+            json_1[0], {"id": 69, "width": 15, "height": 42, "x": 7, "y": 9}
+        )
+        self.assertEqual(json_1[1], {"id": 3, "width": 4, "height": 2, "x": 6, "y": 8})
 
     def frmjson_empty(self):
         """tests from_json_string with empty str"""
