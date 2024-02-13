@@ -1,84 +1,51 @@
 #!/usr/bin/python3
-"""
-Contains tests for Base class
-"""
-
 import unittest
-import json
-from models import base
-
-Base = base.Base
+from models.base import Base
 
 
 class TestBase(unittest.TestCase):
-    """check functionality of Base class"""
+    """Tests the Base class's methods and attributes."""
 
-    def _too_many_args(self):
-        """testing too many args to init"""
-        with self.assertRaises(TypeError):
-            b = Base(1, 1)
+    @classmethod
+    def setUpClass(cls):
+        cls.b1 = Base()
+        cls.b2 = Base()
+        cls.b21 = Base(21)
+        cls.bNeg3 = Base(-3)
 
-    def _no_id(self):
-        """Testing id as None"""
-        b = Base()
-        self.assertEqual(b.id, 1)
-
-    def _id_set(self):
-        """Testing id as not None"""
-        b98 = Base(98)
-        self.assertEqual(b98.id, 98)
-
-    def _no_id_after_set(self):
-        """Testing id as None after not None"""
-        b2 = Base()
-        self.assertEqual(b2.id, 2)
-
-    def _nb_private(self):
-        """Testing nb_objects as a private instance attribute"""
-        b = Base(3)
-        with self.assertRaises(AttributeError):
-            print(b.nb_objects)
-        with self.assertRaises(AttributeError):
-            print(b.__nb_objects)
-
-    def _to_json_string(self):
-        """Testing regular to json string"""
+    @classmethod
+    def tearDownClass(cls):
         Base._Base__nb_objects = 0
-        d1 = {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}
-        d2 = {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}
-        json_s = Base.to_json_string([d1, d2])
-        self.assertTrue(type(json_s) is str)
-        d = json.loads(json_s)
-        self.assertEqual(d, [d1, d2])
 
-    def _empty_to_json_string(self):
-        """Test for passing empty list"""
-        json_s = Base.to_json_string([])
-        self.assertTrue(type(json_s) is str)
-        self.assertEqual(json_s, "[]")
+    def test_init(self):
+        self.assertEqual(self.b1.id, 1)
+        self.assertEqual(self.b2.id, 2)
+        self.assertEqual(Base._Base__nb_objects, 2)
 
-    def _None_to_json_String(self):
-        """testting None to a json"""
-        json_s = Base.to_json_string(None)
-        self.assertTrue(type(json_s) is str)
-        self.assertEqual(json_s, "[]")
+    def test_to_json_string(self):
+        self.assertEqual(Base.to_json_string(None), "[]")
+        self.assertEqual(Base.to_json_string([]), "[]")
+        self.assertEqual(Base.to_json_string([{}]), "[{}]")
+        self.assertEqual(Base.to_json_string([{}, {}]), "[{}, {}]")
 
-    def _from_json_string(self):
-        """Tests normal from_json_string"""
-        json_str = '[{"id": 9, "width": 5, "height": 6, "x": 7, "y": 8}, \
-{"id": 2, "width": 2, "height": 3, "x": 4, "y": 0}]'
-        json_l = Base.from_json_string(json_str)
-        self.assertTrue(type(json_l) is list)
-        self.assertEqual(len(json_l), 2)
-        self.assertTrue(type(json_l[0]) is dict)
-        self.assertTrue(type(json_l[1]) is dict)
-        self.assertEqual(json_l[0], {"id": 9, "width": 5, "height": 6, "x": 7, "y": 8})
-        self.assertEqual(json_l[1], {"id": 2, "width": 2, "height": 3, "x": 4, "y": 0})
+    def test_from_json_string(self):
+        self.assertEqual(Base.from_json_string(None), [])
+        self.assertEqual(Base.from_json_string(""), [])
+        self.assertEqual(Base.from_json_string("[]"), [])
+        self.assertEqual(Base.from_json_string("[{}]"), [{}])
+        self.assertEqual(Base.from_json_string("[{}, {}]"), [{}, {}])
 
-    def _frjs_empty(self):
-        """Tests from_json_string  empty string"""
-        self.assertEqual([], Base.from_json_string(""))
+    def test_save_to_file(self):
+        with self.assertRaises(TypeError):
+            Base.save_to_file()
 
-    def _frjs_None(self):
-        """Testing from_json_string   none string"""
-        self.assertEqual([], Base.from_json_string(None))
+    def test_create(self):
+        with self.assertRaises(TypeError):
+            Base.create()
+
+    def test_load_from_file(self):
+        self.assertEqual(type(Base.load_from_file()), type([]))
+
+
+if __name__ == "__main__":
+    unittest.main()
