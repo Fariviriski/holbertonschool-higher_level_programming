@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-"""rectangle
+"""rectangle module for use
 """
+
+
 from models.base import Base
 
 
 class Rectangle(Base):
-    """Inherits from Base"""
+    """rectangle class for use"""
 
     def __init__(self, width, height, x=0, y=0, id=None):
         super().__init__(id)
@@ -13,6 +15,72 @@ class Rectangle(Base):
         self.height = height
         self.x = x
         self.y = y
+
+    def __str__(self):
+        """override for str method used in print etc"""
+        builder = "[{}] ({}) {}/{} - {}/{}".format(
+            self.__class__.__name__, self.id, self.x, self.y, self.width, self.height
+        )
+        return builder
+
+    def area(self):
+        """returns the area value of given rectangle instance"""
+        return self.width * self.height
+
+    def display(self):
+        """prints the rectangle to stdout"""
+        for y_sp in range(0, self.y):
+            print()
+        for i in range(0, self.height):
+            builder = ""
+            for x_sp in range(0, self.x):
+                builder += " "
+            for j in range(0, self.width):
+                builder += "#"
+            print(builder)
+
+    def update(self, *args, **kwargs):
+        """takes an *args argument and sets arguments respective
+        to instantiation function
+        """
+        if args is not None and len(args) > 0:
+            for i, arg in enumerate(args):
+                if i == 0:
+                    self.id = arg
+                elif i == 1:
+                    self.width = arg
+                elif i == 2:
+                    self.height = arg
+                elif i == 3:
+                    self.x = arg
+                elif i == 4:
+                    self.y = arg
+        elif kwargs is not None:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
+
+    def to_dictionary(self):
+        """returns dictionary representation of current rectangle"""
+        return {
+            "id": self.id,
+            "width": self.width,
+            "height": self.height,
+            "x": self.x,
+            "y": self.y,
+        }
+
+    def to_csv(self):
+        """returns a list containing csv representation of rectangle"""
+        return [self.id, self.width, self.height, self.x, self.y]
 
     @property
     def width(self):
@@ -61,61 +129,3 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
-
-    def area(self):
-        """Returns area of the rectangle"""
-
-        return self.__width * self.__height
-
-    def display(self):
-        """Returns printed rectangle with '#'
-        y is newline, x is space
-        """
-
-        if self.__y != 0:
-            for newline in range(self.__y):
-                print()
-
-        for row in range(self.__height):
-            print((self.__x * " ") + (self.__width * "#"))
-
-    def __str__(self):
-        """Returns formatted information display"""
-
-        return "[{}] ({}) {}/{} - {}/{}".format(
-            self.__class__.__name__,
-            self.id,
-            self.__x,
-            self.__y,
-            self.__width,
-            self.__height,
-        )
-
-    def update(self, *args, **kwargs):
-        """Updates rectangle values"""
-
-        if len(kwargs) != 0:
-            for k, v in kwargs.items():
-                setattr(self, k, v)
-        elif len(args) != 0:
-            try:
-                self.id = args[0]
-                self.__width = args[1]
-                self.__height = args[2]
-                self.__x = args[3]
-                self.__y = args[4]
-            except IndexError:
-                pass
-        else:
-            print()
-
-    def to_dictionary(self):
-        """Returns dict representation"""
-
-        return {
-            "x": self.__x,
-            "y": self.__y,
-            "id": self.id,
-            "height": self.__height,
-            "width": self.__width,
-        }
