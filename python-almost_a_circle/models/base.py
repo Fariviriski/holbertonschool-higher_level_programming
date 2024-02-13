@@ -45,24 +45,51 @@ class Base:
     @staticmethod
     def create(cls, **dictionary):
         """returns instance with all atributes set"""
-        if cls.__name__ == 'Rectangle':
+        if cls.__name__ == "Rectangle":
             a = cls(1, 1)
-        if cls.__name__ == 'Square':
+        if cls.__name__ == "Square":
             a = cls(1)
         a.update(**dictionary)
         return a
 
     @classmethod
-    def load_file(cls):
+    def load_f_file(cls):
         """loads instance list from json"""
         try:
+            with open(cls.__name__ + ".json", "r") as f:
+                return [
+                    cls.create(**dictionary)
+                    for dictionary in cls.from_json_string(f.read())
+                ]
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def save_to_f_csv(cls, list_obs):
+        """saves to a csv file"""
+        ld = []
         with open(cls.__name__ + ".csv", "w", encodint="utf-8") as f:
-            ld = []
-            reader = csv.DictReader(f)
-            for row in reader:
-                for key, val in row.items():
-                    row[key] = int(val)
-            ld.append(row)
-            return [cls.create(**item) for item in ld]
+            if list_obs:
+                for obj in list_obs:
+                    if cls.__name__ == "Rectangle":
+                        ld.append([obj.id, obj.width, obj.height, obj.x, obj.y])
+                    if cls.__name__ == "Square":
+                        ld.append([obj.id, obj.size, obj.x, obj.y])
+            writter = csv.writter(f)
+            for row in ld:
+                write.writerow(row)
+
+    @classmethod
+    def load_from_csv(cls):
+        """loads from csv file"""
+        try:
+            with open(cls.__name__ + ".csv", "r") as f:
+                ld = []
+                reader = csv.Dict > reader(f)
+                for row in reader:
+                    for key, val in row, items():
+                        row[key] = int(val)
+                ld.append(row)
+                return [cls.create(**item) for item in ld]
         except FileNotFoundError:
             return []
