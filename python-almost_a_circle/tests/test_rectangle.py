@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+
+# 0. If it's not tested it doesn't work.
+# Run: python3 -m unittest discover tests
+
 import io
 import sys
 import unittest
@@ -6,6 +10,7 @@ from models.base import Base
 from models.rectangle import Rectangle
 
 
+# Class #0
 class RectangleInstances(unittest.TestCase):
     """A class that defines instances of the Rectangle model"""
 
@@ -95,6 +100,7 @@ class RectangleInstances(unittest.TestCase):
         self.assertEqual(10, r.y)
 
 
+# Class #1
 class WidthInstances(unittest.TestCase):
     """A class that defines instances for width attribute"""
 
@@ -144,23 +150,23 @@ class WidthInstances(unittest.TestCase):
 
     def test_bytes_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(b'Python', 2)
+            Rectangle(b"Python", 2)
 
     def test_bytearray_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(bytearray(b'abcdefg'), 2)
+            Rectangle(bytearray(b"abcdefg"), 2)
 
     def test_memoryview_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(memoryview(b'abcedfg'), 2)
+            Rectangle(memoryview(b"abcedfg"), 2)
 
     def test_inf_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(float('inf'), 2)
+            Rectangle(float("inf"), 2)
 
     def test_nan_width(self):
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
-            Rectangle(float('nan'), 2)
+            Rectangle(float("nan"), 2)
 
     def test_negative_width(self):
         with self.assertRaisesRegex(ValueError, "width must be > 0"):
@@ -171,6 +177,7 @@ class WidthInstances(unittest.TestCase):
             Rectangle(0, 2)
 
 
+# Class #2
 class HeightInstances(unittest.TestCase):
     """A class that defines instances for height attribute"""
 
@@ -216,23 +223,23 @@ class HeightInstances(unittest.TestCase):
 
     def test_bytes_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, b'Python')
+            Rectangle(1, b"Python")
 
     def test_bytearray_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, bytearray(b'abcdefg'))
+            Rectangle(1, bytearray(b"abcdefg"))
 
     def test_memoryview_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, memoryview(b'abcedfg'))
+            Rectangle(1, memoryview(b"abcedfg"))
 
     def test_inf_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, float('inf'))
+            Rectangle(1, float("inf"))
 
     def test_nan_height(self):
         with self.assertRaisesRegex(TypeError, "height must be an integer"):
-            Rectangle(1, float('nan'))
+            Rectangle(1, float("nan"))
 
     def test_negative_height(self):
         with self.assertRaisesRegex(ValueError, "height must be > 0"):
@@ -243,6 +250,7 @@ class HeightInstances(unittest.TestCase):
             Rectangle(1, 0)
 
 
+# Class #3
 class XInstances(unittest.TestCase):
     """A class that defines instances for x attribute"""
 
@@ -292,29 +300,30 @@ class XInstances(unittest.TestCase):
 
     def test_bytes_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, b'Python')
+            Rectangle(1, 2, b"Python")
 
     def test_bytearray_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, bytearray(b'abcdefg'))
+            Rectangle(1, 2, bytearray(b"abcdefg"))
 
     def test_memoryview_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, memoryview(b'abcedfg'))
+            Rectangle(1, 2, memoryview(b"abcedfg"))
 
     def test_inf_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, float('inf'), 2)
+            Rectangle(1, 2, float("inf"), 2)
 
     def test_nan_x(self):
         with self.assertRaisesRegex(TypeError, "x must be an integer"):
-            Rectangle(1, 2, float('nan'), 2)
+            Rectangle(1, 2, float("nan"), 2)
 
     def test_negative_x(self):
         with self.assertRaisesRegex(ValueError, "x must be >= 0"):
             Rectangle(5, 3, -1, 0)
 
 
+# Class #4
 class YInstances(unittest.TestCase):
     """A class that defines instances for y attribute"""
 
@@ -360,29 +369,30 @@ class YInstances(unittest.TestCase):
 
     def test_bytes_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 3, b'Python')
+            Rectangle(1, 2, 3, b"Python")
 
     def test_bytearray_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 3, bytearray(b'abcdefg'))
+            Rectangle(1, 2, 3, bytearray(b"abcdefg"))
 
     def test_memoryview_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 3, memoryview(b'abcedfg'))
+            Rectangle(1, 2, 3, memoryview(b"abcedfg"))
 
     def test_inf_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 1, float('inf'))
+            Rectangle(1, 2, 1, float("inf"))
 
     def test_nan_y(self):
         with self.assertRaisesRegex(TypeError, "y must be an integer"):
-            Rectangle(1, 2, 1, float('nan'))
+            Rectangle(1, 2, 1, float("nan"))
 
     def test_negative_y(self):
         with self.assertRaisesRegex(ValueError, "y must be >= 0"):
             Rectangle(3, 5, 0, -1)
 
 
+# Class #5
 class RectangleInitOrder(unittest.TestCase):
     """A class that defines the order of initializing rectabgle instances"""
 
@@ -411,6 +421,7 @@ class RectangleInitOrder(unittest.TestCase):
             Rectangle(1, 2, "invalid x", "invalid y")
 
 
+# Class #6
 class RectangleArea(unittest.TestCase):
     """A class that defines area of a rectangle"""
 
@@ -434,6 +445,7 @@ class RectangleArea(unittest.TestCase):
             r.area(1)
 
 
+# Class #7
 class DisplayMethodsR(unittest.TestCase):
     """A class that defines the print & display methons of a rectangle"""
 
@@ -513,6 +525,7 @@ class DisplayMethodsR(unittest.TestCase):
             r.display(1)
 
 
+# Class #8
 class RectangleArgs(unittest.TestCase):
     """A class that defines updating *args method for rectangle model"""
 
@@ -650,6 +663,7 @@ class RectangleArgs(unittest.TestCase):
             r.update(89, 1, 2, "invalid", "invalid")
 
 
+# Class #9
 class RectangleKwargs(unittest.TestCase):
     """A class that defines updating **kwargs method for rectangle model"""
 
@@ -762,12 +776,13 @@ class RectangleKwargs(unittest.TestCase):
         self.assertEqual("[Rectangle] (89) 19/7 - 10/5", str(r))
 
 
+# Class #10
 class RectangleTodict(unittest.TestCase):
     """A class that defines dictionary representation of rectangles"""
 
     def test_to_dictionary_output(self):
         r = Rectangle(10, 2, 1, 9, 5)
-        correct = {'x': 1, 'y': 9, 'id': 5, 'height': 2, 'width': 10}
+        correct = {"x": 1, "y": 9, "id": 5, "height": 2, "width": 10}
         self.assertDictEqual(correct, r.to_dictionary())
 
     def test_to_dictionary_no_object_changes(self):
