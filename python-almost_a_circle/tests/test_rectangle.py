@@ -180,7 +180,7 @@ class RectangleTest(unittest.TestCase):
         with self.assertRaises(TypeError) as e:
             r.area(5)
         self.assertEqual(
-            "area() takes 1 positional argument \
+            "Rectangle.area() takes 1 positional argument \
 but 2 were given",
             str(e.exception),
         )
