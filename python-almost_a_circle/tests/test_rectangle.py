@@ -174,6 +174,14 @@ class RectangleTest(unittest.TestCase):
             r = Rectangle(1, 1, 1, MyInt(1))
         self.assertEqual("y must be an integer", str(e.exception))
 
+    def test_4_0(self):
+        """Wrong amount of params"""
+        r = Rectangle(1, 2)
+        msg = "Rectangle.area() takes 1 positional argument but 2 were given"
+        with self.assertRaises(TypeError) as e:
+            r.area(5)
+        self.assertEqual(msg, str(e.exception))
+
     def test_4_1(self):
         """Tests for area method"""
         r = Rectangle(10, 2)
