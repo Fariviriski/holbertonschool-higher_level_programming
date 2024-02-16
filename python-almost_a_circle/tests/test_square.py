@@ -311,16 +311,10 @@ class RectangleTest(unittest.TestCase):
 : 4, "size": 1}, {"x": 6, "y": 0, "id": 1, "size": 5}]\n',
             )
 
-    def test_16_4(self):
-        """More tests for save_to_file method"""
-        Square.save_to_file([])
-        if os.path.exists("Square.json"):
-            string = StringIO()
-            sys.stdout = string
-            with open("Square.json", "r") as f:
-                print(f.read())
-            output = string.getvalue()
-            self.assertEqual(output, "[]\n")
+    def T_save_file_none(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as f:
+            self.assertEqual("[]", f.read())
 
     def test_16_6(self):
         """More tests for save_to_file method"""

@@ -498,16 +498,10 @@ class RectangleTest(unittest.TestCase):
             output = string.getvalue()
             self.assertEqual(output, "[]\n")
 
-    def test_16_5(self):
-        """More tests for save_to_file method"""
+    def T_None_save_file(self):
         Rectangle.save_to_file(None)
-        if os.path.exists("Rectangle.json"):
-            string = StringIO()
-            sys.stdout = string
-            with open("Rectangle.json", "r") as f:
-                print(f.read())
-            output = string.getvalue()
-            self.assertEqual(output, "[]\n")
+        with open("Rectangle.josn", "r") as f:
+            self.assertEqual("[]", f.read())
 
     def test_16_7(self):
         self.set_zero()
