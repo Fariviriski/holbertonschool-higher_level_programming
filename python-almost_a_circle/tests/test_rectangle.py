@@ -174,6 +174,12 @@ class RectangleTest(unittest.TestCase):
             r = Rectangle(1, 1, 1, MyInt(1))
         self.assertEqual("y must be an integer", str(e.exception))
 
+        def test4(self):
+            r = Rectangle(1, 2)
+            with self.assertRaises(TypeError) as e:
+                r.area(5)
+            self.assertEqual(e, str(e.exception))
+
     def test_4_1(self):
         """Tests for area method"""
         r = Rectangle(10, 2)
