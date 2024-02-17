@@ -3,7 +3,6 @@
 import os
 import unittest
 from models.base import Base
-from models.rectangle import Rectangle
 from models.square import Square
 from io import StringIO
 import sys
@@ -302,7 +301,7 @@ class RectangleTest(unittest.TestCase):
         if os.path.exists("Square.json"):
             string = StringIO()
             sys.stdout = string
-            with open("Square.json", "r") as f:
+            with open("Square.json", "r", encoding="utf-8") as f:
                 print(f.read())
             output = string.getvalue()
             self.assertEqual(
@@ -311,10 +310,10 @@ class RectangleTest(unittest.TestCase):
 : 4, "size": 1}, {"x": 6, "y": 0, "id": 1, "size": 5}]\n',
             )
 
-    def T_save_file_none(self):
-        """testing none func"""
+    def test_16_4(self):
+        """Test none func"""
         Square.save_to_file(None)
-        with open("Square.json", "r") as f:
+        with open("Square.json", "r", encoding="utf-8") as f:
             self.assertEqual("[]", f.read())
 
     def test_16_6(self):
@@ -323,7 +322,7 @@ class RectangleTest(unittest.TestCase):
         if os.path.exists("Square.json"):
             string = StringIO()
             sys.stdout = string
-            with open("Square.json", "r") as f:
+            with open("Square.json", "r", encoding="utf-8") as f:
                 print(f.read())
             output = string.getvalue()
             self.assertEqual(output, "[]\n")
@@ -334,7 +333,7 @@ class RectangleTest(unittest.TestCase):
         if os.path.exists("Square.json"):
             string = StringIO()
             sys.stdout = string
-            with open("Square.json", "r") as f:
+            with open("Square.json", "r", encoding="utf-8") as f:
                 print(f.read())
             output = string.getvalue()
             self.assertEqual(
