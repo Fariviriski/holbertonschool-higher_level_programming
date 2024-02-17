@@ -473,7 +473,7 @@ class RectangleTest(unittest.TestCase):
         if os.path.exists("Rectangle.json"):
             string = StringIO()
             sys.stdout = string
-            with open("Rectangle.json", "r") as f:
+            with open("Rectangle.json", "r", encoding="utf-8") as f:
                 print(f.read())
             output = string.getvalue()
             self.assertEqual(
@@ -489,14 +489,14 @@ class RectangleTest(unittest.TestCase):
         if os.path.exists("Rectangle.json"):
             string = StringIO()
             sys.stdout = string
-            with open("Rectangle.json", "r") as f:
+            with open("Rectangle.json", "r", encoding="utf-8") as f:
                 print(f.read())
             output = string.getvalue()
             self.assertEqual(output, "[]\n")
 
-    def T_None_save_file(self):
+    def test_16_3(self):
         Rectangle.save_to_file(None)
-        with open("Rectangle.josn", "r") as f:
+        with open("Rectangle.josn", "r", encoding="utf-8") as f:
             self.assertEqual("[]", f.read())
 
     def test_16_7(self):
