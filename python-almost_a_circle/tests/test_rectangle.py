@@ -496,7 +496,7 @@ class RectangleTest(unittest.TestCase):
 
     def test_16_3(self):
         Rectangle.save_to_file(None)
-        with open("Rectangle.josn", "r", encoding="utf-8") as f:
+        with open("Rectangle.json", "r", encoding="utf-8") as f:
             self.assertEqual("[]", f.read())
 
     def test_16_7(self):
