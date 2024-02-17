@@ -312,6 +312,7 @@ class RectangleTest(unittest.TestCase):
             )
 
     def T_save_file_none(self):
+        """testing none func"""
         Square.save_to_file(None)
         with open("Square.json", "r") as f:
             self.assertEqual("[]", f.read())
